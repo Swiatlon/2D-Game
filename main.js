@@ -10,6 +10,7 @@ let square = {
   x_velocity: 0,
   y_velocity: 0,
   jumping: true,
+  gravity : 320 ,
 };
 let key = "";
 let secondKey = "";
@@ -98,16 +99,16 @@ const animate = function () {
   } else if (key == "left") {
     square.x_velocity -= 6;
   }
-  if (secondKey == "up" && square.y > 100 && square.jumping == true) {
+  if (secondKey == "up" && square.y > square.gravity && square.jumping == true) {
     square.y -= 5;
     square.x_velocity = 0;
-    if (square.y < 350 && key == "left") { // zaczyna
+    if (square.y < 250 && key == "left") { // zaczyna
       square.x_velocity -= 6;
-    } else if (square.y < 350 && key == "right") { // tutaj masz ify ktore pozwalaja ci na to zeby postac mogla isc w lewo prawo od pewnej wysokosci
+    } else if (square.y < 250 && key == "right") { // tutaj masz ify ktore pozwalaja ci na to zeby postac mogla isc w lewo prawo od pewnej wysokosci
       square.x_velocity += 6;
     } // konczy
 
-  } else if (square.y == 100) {
+  } else if (square.y == square.gravity) {
 
     secondKey = "dziala";
     // console.log(key);
@@ -119,7 +120,7 @@ const animate = function () {
   square.x += square.x_velocity;
   square.y_velocity *= 0.1;
   square.x_velocity *= 0.1;
-  // console.log(square.x_velocity);
+  console.log(square.y);
   // squar();
   drawWiercik();
 
