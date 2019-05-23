@@ -1,0 +1,14 @@
+html{
+   width: 100vh;
+   height: 100vh;
+}
+body{
+    width: 100%;
+    margin:0px;
+    height: 100%;
+    background:rgba(22, 19, 19, 0.856);
+}
+
+canvas{
+    position: absolute;
+}
