@@ -1,7 +1,4 @@
-let canvas = document.querySelector('canvas');
-let ctx = canvas.getContext('2d');
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
+
 let square = {
   x: window.innerWidth / 2,
   y: 500,
@@ -93,7 +90,7 @@ const secondKeyListener = function (event) {
 }
 
 const animate = function () {
-  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
+  ctx.clearRect(0,0, window.innerWidth, 555);
   if (key == "right") {
     square.x_velocity += 6;
   } else if (key == "left") {
