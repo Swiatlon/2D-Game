@@ -1,24 +1,26 @@
-
+let canvas = document.querySelector('canvas');
+let ctx = canvas.getContext('2d');
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
 let square = {
-  x: window.innerWidth / 2,
+  x: 0,
   y: 500,
   width: 51,
   height: 56,
   x_velocity: 0,
   y_velocity: 0,
   jumping: true,
-  gravity : 320 ,
+  gravity: 320,
 };
 let key = "";
 let secondKey = "";
-
-const imageWiercik = document.getElementById("source");
 
 
 function drawWiercik() {
   ctx.drawImage(imageWiercik, square.x, square.y);
 }
-drawWiercik();
+
+
 // let image = new Image(51, 56);
 // let _self = this;
 // image.onload = function () {
@@ -90,7 +92,8 @@ const secondKeyListener = function (event) {
 }
 
 const animate = function () {
-  ctx.clearRect(0,0, window.innerWidth, 555);
+  ctx.clearRect(0, 0, window.innerWidth, 556);
+  drawMap();
   if (key == "right") {
     square.x_velocity += 6;
   } else if (key == "left") {
@@ -99,9 +102,9 @@ const animate = function () {
   if (secondKey == "up" && square.y > square.gravity && square.jumping == true) {
     square.y -= 5;
     square.x_velocity = 0;
-    if (square.y < 250 && key == "left") { // zaczyna
+    if (square.y < 450 && key == "left") { // zaczyna
       square.x_velocity -= 6;
-    } else if (square.y < 250 && key == "right") { // tutaj masz ify ktore pozwalaja ci na to zeby postac mogla isc w lewo prawo od pewnej wysokosci
+    } else if (square.y < 450 && key == "right") { // tutaj masz ify ktore pozwalaja ci na to zeby postac mogla isc w lewo prawo od pewnej wysokosci
       square.x_velocity += 6;
     } // konczy
 
@@ -117,16 +120,19 @@ const animate = function () {
   square.x += square.x_velocity;
   square.y_velocity *= 0.1;
   square.x_velocity *= 0.1;
-  console.log(square.y);
+  // console.log(square.y);
   // squar();
+  
   drawWiercik();
 
   window.requestAnimationFrame(animate);
 }
+
 drawWiercik();
 window.addEventListener("keydown", keyListener);
 window.addEventListener("keyup", secondKeyListener);
 window.requestAnimationFrame(animate);
+
 // if (key == "up" && square.y >300 ){
 //   square.y  -= 10;
 //   console.log(key);
